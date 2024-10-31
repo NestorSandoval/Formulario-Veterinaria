@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form"
 import Error from "./Error"
+
+import { toast } from "react-toastify"
 import type { DraftPatient } from "../types"
 import { usePatientStore } from "../store/store"
 import { useEffect } from "react"
@@ -35,8 +37,10 @@ export default function PatientForm() {
     const registerPatient = (data: DraftPatient) => { 
         if(activeId){
             updatePatient(data)
+            toast.success("Paciente actualizado correctamente")
         } else {
             addPatient(data)
+            toast.success("Paciente registrado correctamente")
         }
     // Es cuando el usuario hace click en el boton de resetear el formulario
         reset()

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { DraftPatient, Patient } from "../types";
 import { v4 as uuidv4 } from "uuid";
-import { devtools } from "zustand/middleware"
+import { createJSONStorage, devtools, persist } from "zustand/middleware"
 
 
 // Todo esto un estado global que se va a usar para guardar los datos de los
@@ -22,7 +22,9 @@ const createPatient = (patient: DraftPatient): Patient => {
 
 
 export const usePatientStore = create<PatientState>()(
-    devtools((set) => ({    
+    devtools(
+        
+        persist((set) => ({    
     // Estados
     patients: [],
     activeId: "",
@@ -57,6 +59,9 @@ export const usePatientStore = create<PatientState>()(
              
              activeId: ""
         }))
-    }
-})
+       }
+    }), {
+            name: "patient-store",
+            storage: createJSONStorage(() => localStorage),
+    })
 ))
