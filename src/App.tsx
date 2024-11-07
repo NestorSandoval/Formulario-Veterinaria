@@ -10,9 +10,12 @@ function App() {
 
   return (
     <>
-    <div className="container mx-auto h-screen">
+    
+    <img src="/backgroundImageMain.png" className="fixed -z-10 blur-xl bg-opacity-95 h-screen w-screen "/>
+    
+    <div className="container mx-auto h-screen mt-5">
      <h1 className='text-center md:w-2/3 md:mx-auto text-4xl gap-x-1 font-extrabold italic'>Pacientes{" "}
-      <span className="text-red-600"> Veterinaria</span>
+      <span className="text-blue-600"> Veterinaria</span>
      </h1>
   
     <div className="mt-12 md:flex">
